@@ -28,9 +28,13 @@ jobs:
         uses: stefanzweifel/git-auto-commit-action@v7.2.0
         with:
           commit_message: "chore: refresh family-doctors map data"
-          file_pattern: GAK/docs/doctors.json GAK/geocode_cache.json
-      - name: Fail when NVD refresh was not possible
+          file_pattern: GAK/docs/doctors.json GAK/geocode_cache.json GAK/*.xlsx
+      - name: Fail when refresh was not possible
         if: env.fetch_rc != '0'
         run: |
-          echo "::error::NVD fetch failed (rc=${{ env.fetch_rc }}) — map built from committed fallback. Direct + proxies all failed."
-          exit 1
+          if ls GAK/*_gimenes_arsti_*.xlsx >/dev/null 2>&1; then
+            echo "::warning::NVD fetch failed (rc=${{ env.fetch_rc }}) — map refreshed from committed xlsx."
+          else
+            echo "::error::NVD fetch failed (rc=${{ env.fetch_rc }}) and no committed xlsx fallback exists."
+            exit 1
+          fi

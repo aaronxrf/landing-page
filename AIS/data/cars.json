@@ -823,7 +823,7 @@
     {
       "id": "dacia_bigster_bifuel",
       "make": "Dacia",
-      "model": "Bigster 1.2 TCe Bi-Fuel (benzīns/gāze)",
+      "model": "Bigster 1.2 TCe Bi-Fuel",
       "type": "lpg",
       "l100": 8.0,
       "kwh100": null,

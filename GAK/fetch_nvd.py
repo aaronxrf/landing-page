@@ -16,6 +16,8 @@ import urllib.request
 
 import openpyxl
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+
 PAGE_URL = "https://www.vmnvd.gov.lv/lv/gimenes-arsti-atbilstosi-teritorijam"
 JINA = "https://r.jina.ai/"
 CHANNELS = [
@@ -61,7 +63,10 @@ def fetch_page():
     # direct first only in CI; locally proxies only (residential IP is blocked)
     if IN_CI:
         try:
-            return direct(PAGE_URL).decode("utf-8", "replace")
+            page = direct(PAGE_URL).decode("utf-8", "replace")
+            if LINK_RE.findall(page):
+                return page
+            print("    direct page: no xlsx links, trying proxies", file=sys.stderr)
         except Exception as e:
             print(f"    direct page failed: {type(e).__name__}: {e}", file=sys.stderr)
     return jina(PAGE_URL)
@@ -110,7 +115,7 @@ def main():
             print(f"    duplicate region {region}, skipping")
             continue
         FETCHED.add(region)
-        with open(fname, "wb") as f:
+        with open(os.path.join(HERE, fname), "wb") as f:
             f.write(data)
         print(f"    saved {fname}")
 

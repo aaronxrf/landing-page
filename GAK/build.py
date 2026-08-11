@@ -19,8 +19,9 @@ import urllib.request
 
 import openpyxl
 
-CACHE = "geocode_cache.json"
-OUT = "docs/doctors.json"
+HERE = os.path.dirname(os.path.abspath(__file__))
+CACHE = os.path.join(HERE, "geocode_cache.json")
+OUT = os.path.join(HERE, "docs", "doctors.json")
 USER_AGENT = "gimenes-arsti-map/0.1 (localhost; personal use)"
 
 DAYS = ["Pr", "O", "T", "C", "Pk", "S", "Sv"]
@@ -28,7 +29,7 @@ DAYS = ["Pr", "O", "T", "C", "Pk", "S", "Sv"]
 
 def region_files():
     seen = set()
-    for path in sorted(glob.glob("*_gimenes_arsti_*.xlsx")):
+    for path in sorted(glob.glob(os.path.join(HERE, "*_gimenes_arsti_*.xlsx"))):
         wb = openpyxl.load_workbook(path, read_only=True)
         region = wb.sheetnames[0]
         wb.close()
