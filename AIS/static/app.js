@@ -2,12 +2,16 @@ const I18N = {
   en: {
     title: "Car Cost Comparator", petrolPrice: "Petrol, €/L", dieselPrice: "Diesel, €/L",
     elecPrice: "Electricity, €/kWh", annualKm: "Annual km", loading: "Loading fuel prices...",
-    refresh: "Refresh prices", add: "Add", remove: "✕", make: "Make", model: "Model",
+    lpgPrice: "Gas (LPG), €/L", refresh: "Update prices online", add: "Add", remove: "✕", make: "Make", model: "Model",
     type: "Type", consumption: "Consumption", cost100: "Cost /100 km", cost1000: "Cost /1000 km",
     costKm: "Cost /1 km", annualCost: "Cost /year", co2: "CO2 g/km", price: "Price", eqLiters: "≈ petrol equiv.",
     eqLitersHint: "How many litres per 100 km a petrol car would burn to spend as much on fuel as this EV spends on electricity for 100 km. Lower = cheaper to run. Uses the current petrol price, so it changes if you edit it.",
     editHint: "Click the value to edit",
     cycleLabel: "Driving cycle", cycleCity: "City", cycleMixed: "Mixed", cycleHighway: "Highway",
+    cycleHint: "How you drive affects fuel use: city = frequent stops (higher consumption), highway = steady speed. Pick the closest match.",
+    fuelYoYHint: "Assumed yearly fuel price rise, used for break-even and total cost over years of ownership.",
+    ownYearsHint: "How long you plan to keep the car, used for total cost and CO2 over ownership.",
+    autoCalc: "Results recalculate automatically on change",
     maintenance: "Service /yr", insurance: "Insurance /yr", other: "Other /yr",
     fuelYoY: "Fuel price growth, %/yr", ownYears: "Ownership, years", yr: "yr",
     fuel: "Fuel", totalRunning: "Running total", grandTotal: "Grand total",
@@ -21,16 +25,22 @@ const I18N = {
     cumulative: "Cumulative cost (price + running)", distanceKm: "Distance, km", totalCost: "Total cost, €",
     costPer100km: "€ per 100 km", electricityPrice: "€/kWh", petrolReference: "petrol/diesel ref.",
     l100: "L/100km", kwh100: "kWh/100km", petrol: "Petrol", diesel: "Diesel", hybrid: "Hybrid", ev: "Electric",
+    lpg: "LPG", customToggle: "Add custom car", customName: "Make / model",
+    customConsumption: "L/100km or kWh/100km", customPrice: "Price, €", customAdd: "Add", customCancel: "Cancel",
   },
   lv: {
     title: "Auto izmaksu salīdzinātājs", petrolPrice: "Benzīns, €/l", dieselPrice: "Dīzelis, €/l",
     elecPrice: "Elektrība, €/kWh", annualKm: "Gada nobraukums", loading: "Notiek degvielas cenu ielāde...",
-    refresh: "Atjaunot cenas", add: "Pievienot", remove: "✕", make: "Ražotājs", model: "Modelis",
+    lpgPrice: "Gāze (LPG), €/l", refresh: "Atjaunināt cenas tiešsaistē", add: "Pievienot", remove: "✕", make: "Ražotājs", model: "Modelis",
     type: "Tips", consumption: "Patēriņš", cost100: "Izmaksas /100 km", cost1000: "Izmaksas /1000 km",
     costKm: "Izmaksas /1 km", annualCost: "Izmaksas /gadā", co2: "CO2 g/km", price: "Cena", eqLiters: "≈ benzīna ekv.",
     eqLitersHint: "Cik litru benzīna uz 100 km izmaksātu tikpat, cik šī elektroauto elektrība uz 100 km. Mazāk = lētāk ekspluatācijā. Aprēķins izmanto pašreizējo benzīna cenu, tāpēc vērtība mainās, ja to rediģē.",
     editHint: "Noklikšķiniet, lai rediģētu",
     cycleLabel: "Braukšanas cikls", cycleCity: "Pilsēta", cycleMixed: "Jaukts", cycleHighway: "Šoseja",
+    cycleHint: "Braukšanas veids ietekmē patēriņu: pilsēta = bieži apstāšanās (lielāks patēriņš), šoseja = vienmērīgs ātrums. Izvēlieties tuvāko.",
+    fuelYoYHint: "Pieņemtais degvielas cenas pieaugums gadā, izmantots atmaksāšanās un kopējo izmaksu aprēķinā.",
+    ownYearsHint: "Cik ilgi plānojat paturēt auto — izmaksām un CO2 īpašuma laikā.",
+    autoCalc: "Rezultāti pārrēķinās automātiski",
     maintenance: "Apkope /gadā", insurance: "Apdrošināšana /gadā", other: "Citi /gadā",
     fuelYoY: "Degvielas cenas pieaugums, %/gadā", ownYears: "Īpašuma laiks, gadi", yr: "g.",
     fuel: "Degviela", totalRunning: "Ekspluatācija kopā", grandTotal: "Kopā",
@@ -45,16 +55,22 @@ const I18N = {
     totalCost: "Kopējās izmaksas, €", costPer100km: "€ uz 100 km", electricityPrice: "€/kWh",
     petrolReference: "benzīna/dīzeļa atsk.", l100: "l/100km", kwh100: "kWh/100km",
     petrol: "Benzīns", diesel: "Dīzelis", hybrid: "Hibrīds", ev: "Elektro",
+    lpg: "Gāze (LPG)", customToggle: "Pievienot savu auto", customName: "Ražotājs / modelis",
+    customConsumption: "l/100km vai kWh/100km", customPrice: "Cena, €", customAdd: "Pievienot", customCancel: "Atcelt",
   },
   ru: {
     title: "Портал сравнения авто", petrolPrice: "Бензин, €/л", dieselPrice: "Дизель, €/л",
     elecPrice: "Электричество, €/кВт·ч", annualKm: "Годовой пробег, км", loading: "Загрузка цен на топливо...",
-    refresh: "Обновить цены", add: "Добавить", remove: "✕", make: "Производитель", model: "Модель",
+    lpgPrice: "Газ (LPG), €/л", refresh: "Обновить цены из интернета", add: "Добавить", remove: "✕", make: "Производитель", model: "Модель",
     type: "Тип", consumption: "Расход", cost100: "Стоимость /100 км", cost1000: "Стоимость /1000 км",
     costKm: "Стоимость /1 км", annualCost: "Стоимость /год", co2: "CO2 г/км", price: "Цена", eqLiters: "≈ бенз. эквив.",
     eqLitersHint: "Сколько литров бензина на 100 км сожгла бы машина, чтобы потратить на топливо столько же, сколько этот электромобиль тратит на электричество за 100 км. Меньше = дешевле в эксплуатации. Считается по текущей цене бензина, поэтому меняется, если её отредактировать.",
     editHint: "Нажмите на значение, чтобы изменить",
     cycleLabel: "Цикл поездок", cycleCity: "Город", cycleMixed: "Смешанный", cycleHighway: "Трасса",
+    cycleHint: "Стиль поездок влияет на расход: город = частые остановки (выше расход), трасса = стабильная скорость. Выберите ближайший.",
+    fuelYoYHint: "Предполагаемый годовой рост цен на топливо, используется для окупаемости и общих расходов за срок владения.",
+    ownYearsHint: "Сколько лет планируете владеть машиной — для общих расходов и CO2 за срок владения.",
+    autoCalc: "Результаты пересчитываются автоматически",
     maintenance: "Обслуживание /год", insurance: "Страховка /год", other: "Прочее /год",
     fuelYoY: "Рост цены топлива, %/год", ownYears: "Срок владения, лет", yr: "лет",
     fuel: "Топливо", totalRunning: "Итого эксплуатация", grandTotal: "Итого",
@@ -69,6 +85,8 @@ const I18N = {
     totalCost: "Суммарные расходы, €", costPer100km: "€ на 100 км", electricityPrice: "€/кВт·ч",
     petrolReference: "бенз./диз. ориентир", l100: "л/100км", kwh100: "кВт·ч/100км",
     petrol: "Бензин", diesel: "Дизель", hybrid: "Гибрид", ev: "Электро",
+    lpg: "Газ (LPG)", customToggle: "Своя машина", customName: "Марка / модель",
+    customConsumption: "л/100км или кВт·ч/100км", customPrice: "Цена, €", customAdd: "Добавить", customCancel: "Отмена",
   },
 };
 
@@ -81,17 +99,53 @@ let fuel = { prices: { petrol: 1.8, diesel: 1.7 }, source: "", error: null };
 let selected = [];
 let overrides = {};
 let charts = {};
+let customCars = loadCustom();
 
 const CYCLE = {
-  city:    { petrol: 1.25, diesel: 1.15, hybrid: 0.85, ev: 0.80 },
-  mixed:   { petrol: 1.00, diesel: 1.00, hybrid: 1.00, ev: 1.00 },
-  highway: { petrol: 0.85, diesel: 0.80, hybrid: 1.15, ev: 1.30 },
+  city:    { petrol: 1.25, diesel: 1.15, hybrid: 0.85, ev: 0.80, lpg: 1.25 },
+  mixed:   { petrol: 1.00, diesel: 1.00, hybrid: 1.00, ev: 1.00, lpg: 1.00 },
+  highway: { petrol: 0.85, diesel: 0.80, hybrid: 1.15, ev: 1.30, lpg: 0.85 },
 };
 const cycleFactor = () => CYCLE[$("cycle-select").value];
 
 const $ = (id) => document.getElementById(id);
 
+const num = (id, fb = 0) => {
+  const v = parseFloat($(id).value);
+  return Number.isFinite(v) && v > 0 ? v : fb;
+};
+
+const setupTooltip = () => {
+  const tip = document.createElement("div");
+  tip.id = "info-tip";
+  tip.setAttribute("role", "tooltip");
+  document.body.appendChild(tip);
+  const show = el => {
+    const r = el.getBoundingClientRect();
+    tip.textContent = el.getAttribute("data-hint");
+    tip.style.display = "block";
+    tip.style.left = Math.max(8, Math.min(r.left + r.width / 2 - tip.offsetWidth / 2,
+      innerWidth - tip.offsetWidth - 8)) + "px";
+    tip.style.top = Math.max(8, r.top - tip.offsetHeight - 8) + "px";
+  };
+  const hide = () => { tip.style.display = "none"; };
+  document.addEventListener("mouseover", e => {
+    const el = e.target.closest && e.target.closest(".info");
+    el ? show(el) : hide();
+  });
+  document.addEventListener("focusin", e => {
+    const el = e.target.closest && e.target.closest(".info");
+    if (el) show(el);
+  });
+  document.addEventListener("focusout", e => {
+    if (e.target.closest && e.target.closest(".info")) hide();
+  });
+  addEventListener("scroll", hide, true);
+  addEventListener("resize", hide);
+};
+
 async function init() {
+  setupTooltip();
   $("fuel-source").textContent = t("loading");
   const [carsResp, fuelResp] = await Promise.all([fetch("data/cars.json"), fetch("data/prices.json")]);
   cars = (await carsResp.json()).cars;
@@ -118,6 +172,11 @@ async function init() {
     render();
   });
   $("add-car").addEventListener("click", addSelectedCar);
+  $("custom-toggle").addEventListener("click", () => {
+    $("custom-form").style.display = $("custom-form").style.display === "none" ? "" : "none";
+  });
+  $("custom-cancel").addEventListener("click", () => { $("custom-form").style.display = "none"; });
+  $("custom-add").addEventListener("click", addCustomCar);
   $("refresh-fuel").addEventListener("click", async () => {
     $("refresh-fuel").disabled = true;
     try {
@@ -131,8 +190,13 @@ async function init() {
       updateFuelLabel(); render();
     } finally { $("refresh-fuel").disabled = false; }
   });
-  ["petrol-price", "diesel-price", "elec-price", "annual-km", "fuel-yoy", "ownership-years"].forEach(id =>
-    $(id).addEventListener("input", render));
+  ["petrol-price", "diesel-price", "elec-price", "lpg-price", "annual-km", "fuel-yoy", "ownership-years"].forEach(id =>
+    $(id).addEventListener("input", () => {
+      const v = parseFloat($(id).value);
+      if (!Number.isFinite(v)) $(id).value = "";
+      else if (v < 0) $(id).value = 0;
+      render();
+    }));
   $("cycle-select").addEventListener("change", render);
   $("make-select").addEventListener("change", buildModelSelect);
   document.body.addEventListener("click", (e) => {
@@ -142,9 +206,18 @@ async function init() {
   });
 }
 
+function fmtWhen(ts) {
+  const d = new Date(ts * 1000);
+  const locale = lang === "en" ? "en-US" : "de-DE";
+  const time = { hour: "2-digit", minute: "2-digit" };
+  return d.toDateString() === new Date().toDateString()
+    ? d.toLocaleTimeString(locale, time)
+    : d.toLocaleString(locale, { day: "numeric", month: "short", ...time });
+}
+
 function updateFuelLabel() {
   const el = $("fuel-source");
-  const when = fuel.timestamp ? new Date(fuel.timestamp * 1000).toLocaleTimeString() : "";
+  const when = fuel.timestamp ? fmtWhen(fuel.timestamp) : "";
   el.textContent = `${t("source")}: ${fuel.source || "—"} · ${t("updated")}: ${when}`;
   el.title = fuel.error || "";
 }
@@ -247,34 +320,71 @@ function addSelectedCar() {
 function removeCar(id) {
   selected = selected.filter(x => x !== id);
   delete overrides[id];
+  const i = customCars.findIndex(c => c.id === id);
+  if (i !== -1) { customCars.splice(i, 1); saveCustom(); }
   render();
 }
 
 function fuelPriceFor(car) {
-  const key = car.type === "diesel" ? "diesel-price" : "petrol-price";
-  const v = +$(key).value;
-  if (v > 0) return v;
-  return car.type === "diesel" ? (fuel.prices.diesel || fuel.prices.petrol) : fuel.prices.petrol;
+  const key = car.type === "diesel" ? "diesel-price"
+    : car.type === "lpg" ? "lpg-price" : "petrol-price";
+  const fb = car.type === "diesel" ? (fuel.prices.diesel || fuel.prices.petrol || 1.7)
+    : car.type === "lpg" ? (fuel.prices.lpg || fuel.prices.petrol || 0.8)
+    : (fuel.prices.petrol || 1.8);
+  return num(key, fb);
 }
 
 function per100km(car, overrides) {
   const p = overrides || {};
   const f = cycleFactor()[car.type];
-  if (car.type === "ev") return car.kwh100 * f * (p.elec != null ? p.elec : +$("elec-price").value);
+  if (car.type === "ev") return car.kwh100 * f * (p.elec != null ? p.elec : num("elec-price", fuel.prices.elec != null ? fuel.prices.elec : 0.35));
   const fp = p.fuel != null ? p.fuel : fuelPriceFor(car);
   return car.l100 * f * fp;
 }
 
 function co2For(car) {
   if (car.type === "ev") return 0;
-  const factor = car.type === "diesel" ? 26.6 : 23.2;
+  const factor = car.type === "diesel" ? 26.6 : car.type === "lpg" ? 15.5 : 23.2;
   return Math.round(car.l100 * cycleFactor()[car.type] * factor);
 }
 
 const carById = (id) => {
-  const c = cars.find(x => x.id === id);
+  const c = cars.find(x => x.id === id) || customCars.find(x => x.id === id);
   return c ? Object.assign({}, c, overrides[id] || {}) : c;
 };
+
+function loadCustom() {
+  if (typeof localStorage === "undefined") return [];
+  try { return JSON.parse(localStorage.getItem("ais_custom")) || []; } catch { return []; }
+}
+const saveCustom = () => {
+  if (typeof localStorage === "undefined") return;
+  localStorage.setItem("ais_custom", JSON.stringify(customCars));
+};
+
+function addCustomCar() {
+  const name = $("custom-name").value.trim().split(/\s+/).filter(Boolean);
+  const type = $("custom-type").value;
+  const cons = parseFloat($("custom-cons").value);
+  const price = parseFloat($("custom-price").value);
+  if (name.length < 2 || !Number.isFinite(cons) || cons <= 0 || !Number.isFinite(price) || price < 0) return;
+  const car = {
+    id: "custom_" + Date.now(),
+    make: name[0],
+    model: name.slice(1).join(" "),
+    type,
+    price,
+    ...(type === "ev" ? { kwh100: cons } : { l100: cons }),
+  };
+  customCars.push(car);
+  saveCustom();
+  selected.push(car.id);
+  $("custom-name").value = "";
+  $("custom-cons").value = "";
+  $("custom-price").value = "";
+  $("custom-form").style.display = "none";
+  render();
+}
 
 function render() {
   applyLang();
@@ -287,6 +397,12 @@ function render() {
 
 function applyLang() {
   document.querySelectorAll("[data-i18n]").forEach(el => { el.textContent = t(el.dataset.i18n); });
+  document.querySelectorAll("[data-i18n-ph]").forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
+  document.querySelectorAll("[data-i18n-hint]").forEach(el => {
+    const h = t(el.dataset.i18nHint);
+    el.dataset.hint = h;
+    el.setAttribute("aria-label", h);
+  });
 }
 
 function renderSelected() {
@@ -318,7 +434,7 @@ function renderTable() {
   const head = $("compare").querySelector("thead tr");
   const body = $("compare").querySelector("tbody");
   if (selected.length === 0) { head.innerHTML = ""; body.innerHTML = ""; return; }
-  const annual = +$("annual-km").value || 0;
+  const annual = num("annual-km", 0);
   const rows = [
     ["model", c => `${c.make} ${c.model}`],
     ["type", c => typeLabel(c)],
@@ -335,12 +451,12 @@ function renderTable() {
   ];
   if (selected.some(id => carById(id).type === "ev")) {
     rows.push(["eqLiters", c => c.type === "ev"
-      ? `${fmt(per100km(c) / (+$("petrol-price").value || 1), 1)} ${t("l100")}` : "—"]);
+      ? `${fmt(per100km(c) / num("petrol-price", 1), 1)} ${t("l100")}` : "—"]);
   }
   const carHeader = () => selected.map(id => `<th>${carById(id).make}<br>${carById(id).model}</th>`).join("");
   head.innerHTML = `<th></th>` + carHeader();
   const label = (key) => key === "eqLiters"
-    ? `${t(key)} <span class="info" title="${t("eqLitersHint")}" tabindex="0">i</span>`
+    ? `${t(key)} <span class="info" data-hint="${t("eqLitersHint")}" aria-label="${t("eqLitersHint")}" tabindex="0">i</span>`
     : t(key);
   body.innerHTML = rows.map(([key, fn]) => {
     const cells = selected.map(id => {
@@ -401,7 +517,7 @@ function defaultOverhead(c) {
   return {
     maintenance: Math.max(150, Math.round(c.price * 0.01)),
     insurance: Math.max(150, Math.round(c.price * 0.025)),
-    other: { ev: 80, hybrid: 120, diesel: 190, petrol: 140 }[c.type] || 120,
+    other: { ev: 80, hybrid: 120, diesel: 190, petrol: 140, lpg: 140 }[c.type] || 120,
   };
 }
 
@@ -419,8 +535,8 @@ function annualOverhead(c) {
   return o.maintenance + o.insurance + o.other;
 }
 
-const annualKm = () => +$("annual-km").value || 15000;
-const fuelYoY = () => (+$("fuel-yoy").value || 0) / 100;
+const annualKm = () => num("annual-km", 15000);
+const fuelYoY = () => num("fuel-yoy", 0) / 100;
 function fuelTerm(m) {
   const r = fuelYoY();
   return r > 1e-9 ? annualKm() / r * (Math.exp(r * m / annualKm()) - 1) : m;
@@ -611,7 +727,7 @@ function renderElec() {
 }
 
 function renderCo2() {
-  const years = Math.max(1, +$("ownership-years").value || 10);
+  const years = Math.max(1, num("ownership-years", 10));
   const annual = annualKm();
   makeChart("chart-co2", {
     type: "bar",
@@ -645,7 +761,7 @@ function renderSummary() {
     return;
   }
   $("summary-section").style.display = "";
-  const years = Math.max(1, +$("ownership-years").value || 10);
+  const years = Math.max(1, num("ownership-years", 10));
   const annual = annualKm();
   const r = fuelYoY();
   const grow = r > 1e-9 ? (Math.exp(r * years) - 1) / r : years;

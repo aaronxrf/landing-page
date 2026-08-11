@@ -12,15 +12,25 @@ jobs:
   refresh:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install openpyxl
         run: python3 -m pip install --quiet openpyxl
       - name: Fetch NVD spreadsheets + rebuild map data
         run: |
-          python3 GAK/fetch_nvd.py || echo "fetch failed, falling back to committed xlsx"
+          rc=0
+          python3 GAK/fetch_nvd.py || rc=$?
+          echo "fetch_rc=$rc" >> "$GITHUB_ENV"
+          if [ "$rc" -ne 0 ]; then
+            echo "::warning::fetch_nvd.py failed (rc=$rc) — building map from committed xlsx"
+          fi
           python3 GAK/build.py
       - name: Commit updated snapshot
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v7.2.0
         with:
           commit_message: "chore: refresh family-doctors map data"
           file_pattern: GAK/docs/doctors.json GAK/geocode_cache.json
+      - name: Fail when NVD refresh was not possible
+        if: env.fetch_rc != '0'
+        run: |
+          echo "::error::NVD fetch failed (rc=${{ env.fetch_rc }}) — map built from committed fallback. Direct + proxies all failed."
+          exit 1

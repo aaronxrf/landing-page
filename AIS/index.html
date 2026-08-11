@@ -23,24 +23,30 @@
     <input id="petrol-price" type="number" step="0.001" min="0" value="1.80">
     <label for="diesel-price" data-i18n="dieselPrice">Diesel, €/L</label>
     <input id="diesel-price" type="number" step="0.001" min="0" value="1.70">
+    <label for="lpg-price" data-i18n="lpgPrice">Gas (LPG), €/L</label>
+    <input id="lpg-price" type="number" step="0.001" min="0" value="0.80">
     <label for="elec-price" data-i18n="elecPrice">Electricity, €/kWh</label>
     <input id="elec-price" type="number" step="0.01" min="0" value="0.35">
     <label for="annual-km" data-i18n="annualKm">Annual km</label>
     <input id="annual-km" type="number" step="1000" min="0" value="15000">
-    <label for="cycle-select" data-i18n="cycleLabel">Driving cycle</label>
+    <span class="lbl"><label for="cycle-select" data-i18n="cycleLabel">Driving cycle</label>
+      <span class="info" data-i18n-hint="cycleHint" tabindex="0">i</span></span>
     <select id="cycle-select">
       <option value="city" data-i18n="cycleCity">City</option>
       <option value="mixed" data-i18n="cycleMixed">Mixed</option>
       <option value="highway" data-i18n="cycleHighway">Highway</option>
     </select>
-    <label for="fuel-yoy" data-i18n="fuelYoY">Fuel price growth, %/yr</label>
+    <span class="lbl"><label for="fuel-yoy" data-i18n="fuelYoY">Fuel price growth, %/yr</label>
+      <span class="info" data-i18n-hint="fuelYoYHint" tabindex="0">i</span></span>
     <input id="fuel-yoy" type="number" step="0.5" min="0" value="0">
-    <label for="ownership-years" data-i18n="ownYears">Ownership, years</label>
+    <span class="lbl"><label for="ownership-years" data-i18n="ownYears">Ownership, years</label>
+      <span class="info" data-i18n-hint="ownYearsHint" tabindex="0">i</span></span>
     <input id="ownership-years" type="number" step="1" min="1" value="10">
   </div>
   <div class="price-row">
+    <span id="auto-calc" data-i18n="autoCalc">Results recalculate automatically on change</span>
     <span id="fuel-source">Loading fuel prices...</span>
-    <button id="refresh-fuel" data-i18n="refresh">Refresh prices</button>
+    <button id="refresh-fuel" data-i18n="refresh">Update prices online</button>
   </div>
 </section>
 
@@ -48,6 +54,24 @@
   <select id="make-select"></select>
   <select id="model-select"></select>
   <button id="add-car" data-i18n="add">Add</button>
+</section>
+
+<section id="custom">
+  <button id="custom-toggle" data-i18n="customToggle">Add custom car</button>
+  <div id="custom-form" style="display:none">
+    <input id="custom-name" type="text" data-i18n-ph="customName" placeholder="Make / model">
+    <select id="custom-type">
+      <option value="petrol" data-i18n="petrol">Petrol</option>
+      <option value="diesel" data-i18n="diesel">Diesel</option>
+      <option value="hybrid" data-i18n="hybrid">Hybrid</option>
+      <option value="ev" data-i18n="ev">Electric</option>
+      <option value="lpg" data-i18n="lpg">LPG</option>
+    </select>
+    <input id="custom-cons" type="number" step="0.1" min="0" data-i18n-ph="customConsumption" placeholder="L/100km or kWh/100km">
+    <input id="custom-price" type="number" step="500" min="0" data-i18n-ph="customPrice" placeholder="Price, €">
+    <button id="custom-add" data-i18n="customAdd">Add</button>
+    <button id="custom-cancel" class="btn-secondary" data-i18n="customCancel">Cancel</button>
+  </div>
 </section>
 
 <section id="selected"></section>

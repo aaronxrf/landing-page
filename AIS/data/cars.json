@@ -1,96 +1,1094 @@
 {
   "source": "Curated catalog. ICE consumption: EU WLTP. EV consumption: ev-database.org real-world. Prices: approximate new-car EUR (Latvia).",
   "cars": [
-    {"id": "tesla_model3", "make": "Tesla", "model": "Model 3", "type": "ev", "l100": null, "kwh100": 14.5, "price": 42000},
-    {"id": "tesla_modely", "make": "Tesla", "model": "Model Y", "type": "ev", "l100": null, "kwh100": 15.5, "price": 45000},
-    {"id": "vw_id3", "make": "Volkswagen", "model": "ID.3", "type": "ev", "l100": null, "kwh100": 15.5, "price": 37000},
-    {"id": "vw_id4", "make": "Volkswagen", "model": "ID.4", "type": "ev", "l100": null, "kwh100": 16.5, "price": 44000},
-    {"id": "skoda_enyaq60", "make": "Škoda", "model": "Enyaq 60", "type": "ev", "l100": null, "kwh100": 15.5, "price": 42000},
-    {"id": "skoda_enyaq85", "make": "Škoda", "model": "Enyaq 85", "type": "ev", "l100": null, "kwh100": 16.5, "price": 48000},
-    {"id": "kia_ev6", "make": "Kia", "model": "EV6", "type": "ev", "l100": null, "kwh100": 16.5, "price": 47000},
-    {"id": "kia_niro_ev", "make": "Kia", "model": "Niro EV", "type": "ev", "l100": null, "kwh100": 15.5, "price": 39000},
-    {"id": "hyundai_ioniq5", "make": "Hyundai", "model": "IONIQ 5", "type": "ev", "l100": null, "kwh100": 16.5, "price": 45000},
-    {"id": "hyundai_ioniq6", "make": "Hyundai", "model": "IONIQ 6", "type": "ev", "l100": null, "kwh100": 14.5, "price": 46000},
-    {"id": "mg4", "make": "MG", "model": "MG4", "type": "ev", "l100": null, "kwh100": 16.5, "price": 33000},
-    {"id": "byd_dolphin", "make": "BYD", "model": "Dolphin", "type": "ev", "l100": null, "kwh100": 14.5, "price": 27000},
-    {"id": "byd_atto3", "make": "BYD", "model": "Atto 3", "type": "ev", "l100": null, "kwh100": 16.5, "price": 35000},
-    {"id": "byd_seal", "make": "BYD", "model": "Seal", "type": "ev", "l100": null, "kwh100": 15.5, "price": 40000},
-    {"id": "peugeot_e208", "make": "Peugeot", "model": "e-208", "type": "ev", "l100": null, "kwh100": 15.0, "price": 32000},
-    {"id": "peugeot_e308", "make": "Peugeot", "model": "e-308", "type": "ev", "l100": null, "kwh100": 16.0, "price": 38000},
-    {"id": "opel_corsa_e", "make": "Opel", "model": "Corsa-e", "type": "ev", "l100": null, "kwh100": 15.0, "price": 31000},
-    {"id": "renault_megane_etech", "make": "Renault", "model": "Megane E-Tech", "type": "ev", "l100": null, "kwh100": 16.0, "price": 37000},
-    {"id": "renault_scenic_etech", "make": "Renault", "model": "Scenic E-Tech", "type": "ev", "l100": null, "kwh100": 17.5, "price": 42000},
-    {"id": "nissan_leaf", "make": "Nissan", "model": "Leaf", "type": "ev", "l100": null, "kwh100": 16.0, "price": 33000},
-    {"id": "dacia_spring", "make": "Dacia", "model": "Spring", "type": "ev", "l100": null, "kwh100": 14.5, "price": 19000},
-    {"id": "volvo_ex30", "make": "Volvo", "model": "EX30", "type": "ev", "l100": null, "kwh100": 16.5, "price": 38000},
-    {"id": "volvo_ex40", "make": "Volvo", "model": "EX40", "type": "ev", "l100": null, "kwh100": 17.5, "price": 46000},
-    {"id": "bmw_i4", "make": "BMW", "model": "i4 eDrive35", "type": "ev", "l100": null, "kwh100": 16.5, "price": 51000},
-    {"id": "bmw_ix1", "make": "BMW", "model": "iX1", "type": "ev", "l100": null, "kwh100": 17.5, "price": 49000},
-    {"id": "mercedes_eqa", "make": "Mercedes-Benz", "model": "EQA", "type": "ev", "l100": null, "kwh100": 17.0, "price": 50000},
-    {"id": "audi_q4", "make": "Audi", "model": "Q4 e-tron", "type": "ev", "l100": null, "kwh100": 17.5, "price": 52000},
-    {"id": "cupra_born", "make": "CUPRA", "model": "Born", "type": "ev", "l100": null, "kwh100": 16.0, "price": 42000},
-    {"id": "ford_mustang_me", "make": "Ford", "model": "Mustang Mach-E", "type": "ev", "l100": null, "kwh100": 18.0, "price": 53000},
-    {"id": "fiat_500e", "make": "Fiat", "model": "500e", "type": "ev", "l100": null, "kwh100": 15.5, "price": 30000},
-    {"id": "mg5", "make": "MG", "model": "MG5", "type": "ev", "l100": null, "kwh100": 16.5, "price": 34000},
-
-    {"id": "toyota_yaris", "make": "Toyota", "model": "Yaris 1.5 Hybrid", "type": "hybrid", "l100": 4.0, "kwh100": null, "price": 25000},
-    {"id": "toyota_corolla", "make": "Toyota", "model": "Corolla 1.8 Hybrid", "type": "hybrid", "l100": 4.5, "kwh100": null, "price": 31000},
-    {"id": "toyota_camry", "make": "Toyota", "model": "Camry 2.5 Hybrid", "type": "hybrid", "l100": 5.0, "kwh100": null, "price": 42000},
-    {"id": "toyota_rav4", "make": "Toyota", "model": "RAV4 2.5 Hybrid", "type": "hybrid", "l100": 5.5, "kwh100": null, "price": 40000},
-    {"id": "toyota_chr", "make": "Toyota", "model": "C-HR 1.8 Hybrid", "type": "hybrid", "l100": 4.8, "kwh100": null, "price": 32000},
-    {"id": "honda_hrv", "make": "Honda", "model": "HR-V 1.5 e:HEV", "type": "hybrid", "l100": 5.4, "kwh100": null, "price": 33000},
-    {"id": "lexus_ux", "make": "Lexus", "model": "UX 250h", "type": "hybrid", "l100": 5.2, "kwh100": null, "price": 40000},
-
-    {"id": "vw_golf_tsi", "make": "Volkswagen", "model": "Golf 1.5 TSI", "type": "petrol", "l100": 5.6, "kwh100": null, "price": 30000},
-    {"id": "vw_golf_tdi", "make": "Volkswagen", "model": "Golf 2.0 TDI", "type": "diesel", "l100": 4.8, "kwh100": null, "price": 32000},
-    {"id": "vw_troc", "make": "Volkswagen", "model": "T-Roc 1.5 TSI", "type": "petrol", "l100": 5.9, "kwh100": null, "price": 32000},
-    {"id": "vw_passat_tdi", "make": "Volkswagen", "model": "Passat 2.0 TDI", "type": "diesel", "l100": 5.2, "kwh100": null, "price": 40000},
-    {"id": "skoda_octavia_tsi", "make": "Škoda", "model": "Octavia 1.5 TSI", "type": "petrol", "l100": 5.5, "kwh100": null, "price": 29000},
-    {"id": "skoda_octavia_tdi", "make": "Škoda", "model": "Octavia 2.0 TDI", "type": "diesel", "l100": 4.8, "kwh100": null, "price": 31000},
-    {"id": "skoda_kamiq", "make": "Škoda", "model": "Kamiq 1.0 TSI", "type": "petrol", "l100": 5.4, "kwh100": null, "price": 26000},
-    {"id": "skoda_kodiaq", "make": "Škoda", "model": "Kodiaq 2.0 TDI", "type": "diesel", "l100": 6.0, "kwh100": null, "price": 40000},
-    {"id": "skoda_superb", "make": "Škoda", "model": "Superb 2.0 TDI", "type": "diesel", "l100": 5.4, "kwh100": null, "price": 42000},
-    {"id": "skoda_fabia", "make": "Škoda", "model": "Fabia 1.0 TSI", "type": "petrol", "l100": 5.2, "kwh100": null, "price": 21000},
-    {"id": "dacia_sandero", "make": "Dacia", "model": "Sandero 1.0 TCe", "type": "petrol", "l100": 5.6, "kwh100": null, "price": 15000},
-    {"id": "dacia_duster", "make": "Dacia", "model": "Duster 1.0 TCe", "type": "petrol", "l100": 6.0, "kwh100": null, "price": 21000},
-    {"id": "nissan_qashqai", "make": "Nissan", "model": "Qashqai 1.3", "type": "petrol", "l100": 6.3, "kwh100": null, "price": 33000},
-    {"id": "hyundai_tucson", "make": "Hyundai", "model": "Tucson 1.6 T-GDi", "type": "petrol", "l100": 6.5, "kwh100": null, "price": 34000},
-    {"id": "hyundai_i20", "make": "Hyundai", "model": "i20 1.0 T-GDi", "type": "petrol", "l100": 5.3, "kwh100": null, "price": 21000},
-    {"id": "kia_sportage", "make": "Kia", "model": "Sportage 1.6 T-GDi", "type": "petrol", "l100": 6.3, "kwh100": null, "price": 33000},
-    {"id": "kia_ceed", "make": "Kia", "model": "Ceed 1.5 T-GDi", "type": "petrol", "l100": 5.8, "kwh100": null, "price": 28000},
-    {"id": "renault_clio", "make": "Renault", "model": "Clio 1.0 TCe", "type": "petrol", "l100": 5.2, "kwh100": null, "price": 19000},
-    {"id": "renault_captur", "make": "Renault", "model": "Captur 1.0 TCe", "type": "petrol", "l100": 5.6, "kwh100": null, "price": 25000},
-    {"id": "peugeot_208", "make": "Peugeot", "model": "208 1.2 PureTech", "type": "petrol", "l100": 5.2, "kwh100": null, "price": 21000},
-    {"id": "peugeot_308", "make": "Peugeot", "model": "308 1.2 PureTech", "type": "petrol", "l100": 5.4, "kwh100": null, "price": 28000},
-    {"id": "peugeot_3008", "make": "Peugeot", "model": "3008 1.2 PureTech", "type": "petrol", "l100": 6.0, "kwh100": null, "price": 35000},
-    {"id": "opel_corsa", "make": "Opel", "model": "Corsa 1.2 Turbo", "type": "petrol", "l100": 5.2, "kwh100": null, "price": 21000},
-    {"id": "opel_astra", "make": "Opel", "model": "Astra 1.2 Turbo", "type": "petrol", "l100": 5.4, "kwh100": null, "price": 27000},
-    {"id": "opel_mokka", "make": "Opel", "model": "Mokka 1.2 Turbo", "type": "petrol", "l100": 5.6, "kwh100": null, "price": 28000},
-    {"id": "ford_focus", "make": "Ford", "model": "Focus 1.0 EcoBoost", "type": "petrol", "l100": 5.5, "kwh100": null, "price": 30000},
-    {"id": "ford_puma", "make": "Ford", "model": "Puma 1.0 EcoBoost", "type": "petrol", "l100": 5.7, "kwh100": null, "price": 29000},
-    {"id": "ford_kuga", "make": "Ford", "model": "Kuga 1.5 EcoBoost", "type": "petrol", "l100": 6.5, "kwh100": null, "price": 36000},
-    {"id": "bmw_118i", "make": "BMW", "model": "1 Series 118i", "type": "petrol", "l100": 6.0, "kwh100": null, "price": 39000},
-    {"id": "bmw_320i", "make": "BMW", "model": "3 Series 320i", "type": "petrol", "l100": 6.2, "kwh100": null, "price": 48000},
-    {"id": "bmw_320d", "make": "BMW", "model": "3 Series 320d", "type": "diesel", "l100": 4.9, "kwh100": null, "price": 50000},
-    {"id": "bmw_x1", "make": "BMW", "model": "X1 sDrive18i", "type": "petrol", "l100": 6.5, "kwh100": null, "price": 42000},
-    {"id": "mercedes_a180", "make": "Mercedes-Benz", "model": "A-Class A180", "type": "petrol", "l100": 6.0, "kwh100": null, "price": 38000},
-    {"id": "mercedes_c200", "make": "Mercedes-Benz", "model": "C-Class C200", "type": "petrol", "l100": 6.2, "kwh100": null, "price": 50000},
-    {"id": "mercedes_gla", "make": "Mercedes-Benz", "model": "GLA 200", "type": "petrol", "l100": 6.5, "kwh100": null, "price": 42000},
-    {"id": "audi_a3", "make": "Audi", "model": "A3 35 TFSI", "type": "petrol", "l100": 5.8, "kwh100": null, "price": 38000},
-    {"id": "audi_a4_tdi", "make": "Audi", "model": "A4 40 TDI", "type": "diesel", "l100": 5.0, "kwh100": null, "price": 48000},
-    {"id": "audi_q3", "make": "Audi", "model": "Q3 35 TFSI", "type": "petrol", "l100": 6.5, "kwh100": null, "price": 40000},
-    {"id": "volvo_xc40", "make": "Volvo", "model": "XC40 B3", "type": "petrol", "l100": 6.5, "kwh100": null, "price": 41000},
-    {"id": "volvo_s60", "make": "Volvo", "model": "S60 B4", "type": "petrol", "l100": 6.2, "kwh100": null, "price": 47000},
-    {"id": "mazda_cx30", "make": "Mazda", "model": "CX-30 2.0", "type": "petrol", "l100": 6.2, "kwh100": null, "price": 30000},
-    {"id": "mazda_3", "make": "Mazda", "model": "Mazda3 2.0", "type": "petrol", "l100": 6.0, "kwh100": null, "price": 28000},
-    {"id": "suzuki_swift", "make": "Suzuki", "model": "Swift 1.2", "type": "petrol", "l100": 4.8, "kwh100": null, "price": 19000},
-    {"id": "suzuki_vitara", "make": "Suzuki", "model": "Vitara 1.4T", "type": "petrol", "l100": 5.8, "kwh100": null, "price": 27000},
-    {"id": "citroen_c3", "make": "Citroën", "model": "C3 1.2", "type": "petrol", "l100": 5.4, "kwh100": null, "price": 18000},
-    {"id": "citroen_c5aircross", "make": "Citroën", "model": "C5 Aircross 1.2", "type": "petrol", "l100": 6.0, "kwh100": null, "price": 32000},
-    {"id": "seat_leon", "make": "SEAT", "model": "Leon 1.5 TSI", "type": "petrol", "l100": 5.5, "kwh100": null, "price": 29000},
-    {"id": "cupra_formentor", "make": "CUPRA", "model": "Formentor 1.5 TSI", "type": "petrol", "l100": 6.0, "kwh100": null, "price": 36000},
-    {"id": "mg_zs", "make": "MG", "model": "ZS 1.0 Turbo", "type": "petrol", "l100": 6.0, "kwh100": null, "price": 22000},
-    {"id": "mitsubishi_asx", "make": "Mitsubishi", "model": "ASX 1.0", "type": "petrol", "l100": 5.8, "kwh100": null, "price": 26000},
-    {"id": "vitaris_rocco", "make": "Toyota", "model": "Corolla Cross Hybrid", "type": "hybrid", "l100": 5.0, "kwh100": null, "price": 35000}
+    {
+      "id": "tesla_model3",
+      "make": "Tesla",
+      "model": "Model 3",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 14.5,
+      "price": 42000
+    },
+    {
+      "id": "tesla_modely",
+      "make": "Tesla",
+      "model": "Model Y",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 15.5,
+      "price": 45000
+    },
+    {
+      "id": "vw_id3",
+      "make": "Volkswagen",
+      "model": "ID.3",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 15.5,
+      "price": 37000
+    },
+    {
+      "id": "vw_id4",
+      "make": "Volkswagen",
+      "model": "ID.4",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 16.5,
+      "price": 44000
+    },
+    {
+      "id": "skoda_enyaq60",
+      "make": "Škoda",
+      "model": "Enyaq 60",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 15.5,
+      "price": 42000
+    },
+    {
+      "id": "skoda_enyaq85",
+      "make": "Škoda",
+      "model": "Enyaq 85",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 16.5,
+      "price": 48000
+    },
+    {
+      "id": "kia_ev6",
+      "make": "Kia",
+      "model": "EV6",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 16.5,
+      "price": 47000
+    },
+    {
+      "id": "kia_niro_ev",
+      "make": "Kia",
+      "model": "Niro EV",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 15.5,
+      "price": 39000
+    },
+    {
+      "id": "hyundai_ioniq5",
+      "make": "Hyundai",
+      "model": "IONIQ 5",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 16.5,
+      "price": 45000
+    },
+    {
+      "id": "hyundai_ioniq6",
+      "make": "Hyundai",
+      "model": "IONIQ 6",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 14.5,
+      "price": 46000
+    },
+    {
+      "id": "mg4",
+      "make": "MG",
+      "model": "MG4",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 16.5,
+      "price": 33000
+    },
+    {
+      "id": "byd_dolphin",
+      "make": "BYD",
+      "model": "Dolphin",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 14.5,
+      "price": 27000
+    },
+    {
+      "id": "byd_atto3",
+      "make": "BYD",
+      "model": "Atto 3",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 16.5,
+      "price": 35000
+    },
+    {
+      "id": "byd_seal",
+      "make": "BYD",
+      "model": "Seal",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 15.5,
+      "price": 40000
+    },
+    {
+      "id": "peugeot_e208",
+      "make": "Peugeot",
+      "model": "e-208",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 15.0,
+      "price": 32000
+    },
+    {
+      "id": "peugeot_e308",
+      "make": "Peugeot",
+      "model": "e-308",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 16.0,
+      "price": 38000
+    },
+    {
+      "id": "opel_corsa_e",
+      "make": "Opel",
+      "model": "Corsa-e",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 15.0,
+      "price": 31000
+    },
+    {
+      "id": "renault_megane_etech",
+      "make": "Renault",
+      "model": "Megane E-Tech",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 16.0,
+      "price": 37000
+    },
+    {
+      "id": "renault_scenic_etech",
+      "make": "Renault",
+      "model": "Scenic E-Tech",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 17.5,
+      "price": 42000
+    },
+    {
+      "id": "nissan_leaf",
+      "make": "Nissan",
+      "model": "Leaf",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 16.0,
+      "price": 33000
+    },
+    {
+      "id": "dacia_spring",
+      "make": "Dacia",
+      "model": "Spring",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 14.5,
+      "price": 19000
+    },
+    {
+      "id": "volvo_ex30",
+      "make": "Volvo",
+      "model": "EX30",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 16.5,
+      "price": 38000
+    },
+    {
+      "id": "volvo_ex40",
+      "make": "Volvo",
+      "model": "EX40",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 17.5,
+      "price": 46000
+    },
+    {
+      "id": "bmw_i4",
+      "make": "BMW",
+      "model": "i4 eDrive35",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 16.5,
+      "price": 51000
+    },
+    {
+      "id": "bmw_ix1",
+      "make": "BMW",
+      "model": "iX1",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 17.5,
+      "price": 49000
+    },
+    {
+      "id": "mercedes_eqa",
+      "make": "Mercedes-Benz",
+      "model": "EQA",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 17.0,
+      "price": 50000
+    },
+    {
+      "id": "audi_q4",
+      "make": "Audi",
+      "model": "Q4 e-tron",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 17.5,
+      "price": 52000
+    },
+    {
+      "id": "cupra_born",
+      "make": "CUPRA",
+      "model": "Born",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 16.0,
+      "price": 42000
+    },
+    {
+      "id": "ford_mustang_me",
+      "make": "Ford",
+      "model": "Mustang Mach-E",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 18.0,
+      "price": 53000
+    },
+    {
+      "id": "fiat_500e",
+      "make": "Fiat",
+      "model": "500e",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 15.5,
+      "price": 30000
+    },
+    {
+      "id": "mg5",
+      "make": "MG",
+      "model": "MG5",
+      "type": "ev",
+      "l100": null,
+      "kwh100": 16.5,
+      "price": 34000
+    },
+    {
+      "id": "toyota_yaris",
+      "make": "Toyota",
+      "model": "Yaris 1.5 Hybrid",
+      "type": "hybrid",
+      "l100": 4.0,
+      "kwh100": null,
+      "price": 25000
+    },
+    {
+      "id": "toyota_corolla",
+      "make": "Toyota",
+      "model": "Corolla 1.8 Hybrid",
+      "type": "hybrid",
+      "l100": 4.5,
+      "kwh100": null,
+      "price": 31000
+    },
+    {
+      "id": "toyota_camry",
+      "make": "Toyota",
+      "model": "Camry 2.5 Hybrid",
+      "type": "hybrid",
+      "l100": 5.0,
+      "kwh100": null,
+      "price": 42000
+    },
+    {
+      "id": "toyota_rav4",
+      "make": "Toyota",
+      "model": "RAV4 2.5 Hybrid",
+      "type": "hybrid",
+      "l100": 5.5,
+      "kwh100": null,
+      "price": 40000
+    },
+    {
+      "id": "toyota_chr",
+      "make": "Toyota",
+      "model": "C-HR 1.8 Hybrid",
+      "type": "hybrid",
+      "l100": 4.8,
+      "kwh100": null,
+      "price": 32000
+    },
+    {
+      "id": "honda_hrv",
+      "make": "Honda",
+      "model": "HR-V 1.5 e:HEV",
+      "type": "hybrid",
+      "l100": 5.4,
+      "kwh100": null,
+      "price": 33000
+    },
+    {
+      "id": "lexus_ux",
+      "make": "Lexus",
+      "model": "UX 250h",
+      "type": "hybrid",
+      "l100": 5.2,
+      "kwh100": null,
+      "price": 40000
+    },
+    {
+      "id": "vw_golf_tsi",
+      "make": "Volkswagen",
+      "model": "Golf 1.5 TSI",
+      "type": "petrol",
+      "l100": 5.6,
+      "kwh100": null,
+      "price": 30000
+    },
+    {
+      "id": "vw_golf_tdi",
+      "make": "Volkswagen",
+      "model": "Golf 2.0 TDI",
+      "type": "diesel",
+      "l100": 4.8,
+      "kwh100": null,
+      "price": 32000
+    },
+    {
+      "id": "vw_troc",
+      "make": "Volkswagen",
+      "model": "T-Roc 1.5 TSI",
+      "type": "petrol",
+      "l100": 5.9,
+      "kwh100": null,
+      "price": 32000
+    },
+    {
+      "id": "vw_passat_tdi",
+      "make": "Volkswagen",
+      "model": "Passat 2.0 TDI",
+      "type": "diesel",
+      "l100": 5.2,
+      "kwh100": null,
+      "price": 40000
+    },
+    {
+      "id": "skoda_octavia_tsi",
+      "make": "Škoda",
+      "model": "Octavia 1.5 TSI",
+      "type": "petrol",
+      "l100": 5.5,
+      "kwh100": null,
+      "price": 29000
+    },
+    {
+      "id": "skoda_octavia_tdi",
+      "make": "Škoda",
+      "model": "Octavia 2.0 TDI",
+      "type": "diesel",
+      "l100": 4.8,
+      "kwh100": null,
+      "price": 31000
+    },
+    {
+      "id": "skoda_kamiq",
+      "make": "Škoda",
+      "model": "Kamiq 1.0 TSI",
+      "type": "petrol",
+      "l100": 5.4,
+      "kwh100": null,
+      "price": 26000
+    },
+    {
+      "id": "skoda_kodiaq",
+      "make": "Škoda",
+      "model": "Kodiaq 2.0 TDI",
+      "type": "diesel",
+      "l100": 6.0,
+      "kwh100": null,
+      "price": 40000
+    },
+    {
+      "id": "skoda_superb",
+      "make": "Škoda",
+      "model": "Superb 2.0 TDI",
+      "type": "diesel",
+      "l100": 5.4,
+      "kwh100": null,
+      "price": 42000
+    },
+    {
+      "id": "skoda_fabia",
+      "make": "Škoda",
+      "model": "Fabia 1.0 TSI",
+      "type": "petrol",
+      "l100": 5.2,
+      "kwh100": null,
+      "price": 21000
+    },
+    {
+      "id": "dacia_sandero",
+      "make": "Dacia",
+      "model": "Sandero 1.0 TCe",
+      "type": "petrol",
+      "l100": 5.6,
+      "kwh100": null,
+      "price": 15000
+    },
+    {
+      "id": "dacia_duster",
+      "make": "Dacia",
+      "model": "Duster 1.0 TCe",
+      "type": "petrol",
+      "l100": 6.0,
+      "kwh100": null,
+      "price": 21000
+    },
+    {
+      "id": "nissan_qashqai",
+      "make": "Nissan",
+      "model": "Qashqai 1.3",
+      "type": "petrol",
+      "l100": 6.3,
+      "kwh100": null,
+      "price": 33000
+    },
+    {
+      "id": "hyundai_tucson",
+      "make": "Hyundai",
+      "model": "Tucson 1.6 T-GDi",
+      "type": "petrol",
+      "l100": 6.5,
+      "kwh100": null,
+      "price": 34000
+    },
+    {
+      "id": "hyundai_i20",
+      "make": "Hyundai",
+      "model": "i20 1.0 T-GDi",
+      "type": "petrol",
+      "l100": 5.3,
+      "kwh100": null,
+      "price": 21000
+    },
+    {
+      "id": "kia_sportage",
+      "make": "Kia",
+      "model": "Sportage 1.6 T-GDi",
+      "type": "petrol",
+      "l100": 6.3,
+      "kwh100": null,
+      "price": 33000
+    },
+    {
+      "id": "kia_ceed",
+      "make": "Kia",
+      "model": "Ceed 1.5 T-GDi",
+      "type": "petrol",
+      "l100": 5.8,
+      "kwh100": null,
+      "price": 28000
+    },
+    {
+      "id": "renault_clio",
+      "make": "Renault",
+      "model": "Clio 1.0 TCe",
+      "type": "petrol",
+      "l100": 5.2,
+      "kwh100": null,
+      "price": 19000
+    },
+    {
+      "id": "renault_captur",
+      "make": "Renault",
+      "model": "Captur 1.0 TCe",
+      "type": "petrol",
+      "l100": 5.6,
+      "kwh100": null,
+      "price": 25000
+    },
+    {
+      "id": "peugeot_208",
+      "make": "Peugeot",
+      "model": "208 1.2 PureTech",
+      "type": "petrol",
+      "l100": 5.2,
+      "kwh100": null,
+      "price": 21000
+    },
+    {
+      "id": "peugeot_308",
+      "make": "Peugeot",
+      "model": "308 1.2 PureTech",
+      "type": "petrol",
+      "l100": 5.4,
+      "kwh100": null,
+      "price": 28000
+    },
+    {
+      "id": "peugeot_3008",
+      "make": "Peugeot",
+      "model": "3008 1.2 PureTech",
+      "type": "petrol",
+      "l100": 6.0,
+      "kwh100": null,
+      "price": 35000
+    },
+    {
+      "id": "opel_corsa",
+      "make": "Opel",
+      "model": "Corsa 1.2 Turbo",
+      "type": "petrol",
+      "l100": 5.2,
+      "kwh100": null,
+      "price": 21000
+    },
+    {
+      "id": "opel_astra",
+      "make": "Opel",
+      "model": "Astra 1.2 Turbo",
+      "type": "petrol",
+      "l100": 5.4,
+      "kwh100": null,
+      "price": 27000
+    },
+    {
+      "id": "opel_mokka",
+      "make": "Opel",
+      "model": "Mokka 1.2 Turbo",
+      "type": "petrol",
+      "l100": 5.6,
+      "kwh100": null,
+      "price": 28000
+    },
+    {
+      "id": "ford_focus",
+      "make": "Ford",
+      "model": "Focus 1.0 EcoBoost",
+      "type": "petrol",
+      "l100": 5.5,
+      "kwh100": null,
+      "price": 30000
+    },
+    {
+      "id": "ford_puma",
+      "make": "Ford",
+      "model": "Puma 1.0 EcoBoost",
+      "type": "petrol",
+      "l100": 5.7,
+      "kwh100": null,
+      "price": 29000
+    },
+    {
+      "id": "ford_kuga",
+      "make": "Ford",
+      "model": "Kuga 1.5 EcoBoost",
+      "type": "petrol",
+      "l100": 6.5,
+      "kwh100": null,
+      "price": 36000
+    },
+    {
+      "id": "bmw_118i",
+      "make": "BMW",
+      "model": "1 Series 118i",
+      "type": "petrol",
+      "l100": 6.0,
+      "kwh100": null,
+      "price": 39000
+    },
+    {
+      "id": "bmw_320i",
+      "make": "BMW",
+      "model": "3 Series 320i",
+      "type": "petrol",
+      "l100": 6.2,
+      "kwh100": null,
+      "price": 48000
+    },
+    {
+      "id": "bmw_320d",
+      "make": "BMW",
+      "model": "3 Series 320d",
+      "type": "diesel",
+      "l100": 4.9,
+      "kwh100": null,
+      "price": 50000
+    },
+    {
+      "id": "bmw_x1",
+      "make": "BMW",
+      "model": "X1 sDrive18i",
+      "type": "petrol",
+      "l100": 6.5,
+      "kwh100": null,
+      "price": 42000
+    },
+    {
+      "id": "mercedes_a180",
+      "make": "Mercedes-Benz",
+      "model": "A-Class A180",
+      "type": "petrol",
+      "l100": 6.0,
+      "kwh100": null,
+      "price": 38000
+    },
+    {
+      "id": "mercedes_c200",
+      "make": "Mercedes-Benz",
+      "model": "C-Class C200",
+      "type": "petrol",
+      "l100": 6.2,
+      "kwh100": null,
+      "price": 50000
+    },
+    {
+      "id": "mercedes_gla",
+      "make": "Mercedes-Benz",
+      "model": "GLA 200",
+      "type": "petrol",
+      "l100": 6.5,
+      "kwh100": null,
+      "price": 42000
+    },
+    {
+      "id": "audi_a3",
+      "make": "Audi",
+      "model": "A3 35 TFSI",
+      "type": "petrol",
+      "l100": 5.8,
+      "kwh100": null,
+      "price": 38000
+    },
+    {
+      "id": "audi_a4_tdi",
+      "make": "Audi",
+      "model": "A4 40 TDI",
+      "type": "diesel",
+      "l100": 5.0,
+      "kwh100": null,
+      "price": 48000
+    },
+    {
+      "id": "audi_q3",
+      "make": "Audi",
+      "model": "Q3 35 TFSI",
+      "type": "petrol",
+      "l100": 6.5,
+      "kwh100": null,
+      "price": 40000
+    },
+    {
+      "id": "volvo_xc40",
+      "make": "Volvo",
+      "model": "XC40 B3",
+      "type": "petrol",
+      "l100": 6.5,
+      "kwh100": null,
+      "price": 41000
+    },
+    {
+      "id": "volvo_s60",
+      "make": "Volvo",
+      "model": "S60 B4",
+      "type": "petrol",
+      "l100": 6.2,
+      "kwh100": null,
+      "price": 47000
+    },
+    {
+      "id": "mazda_cx30",
+      "make": "Mazda",
+      "model": "CX-30 2.0",
+      "type": "petrol",
+      "l100": 6.2,
+      "kwh100": null,
+      "price": 30000
+    },
+    {
+      "id": "mazda_3",
+      "make": "Mazda",
+      "model": "Mazda3 2.0",
+      "type": "petrol",
+      "l100": 6.0,
+      "kwh100": null,
+      "price": 28000
+    },
+    {
+      "id": "suzuki_swift",
+      "make": "Suzuki",
+      "model": "Swift 1.2",
+      "type": "petrol",
+      "l100": 4.8,
+      "kwh100": null,
+      "price": 19000
+    },
+    {
+      "id": "suzuki_vitara",
+      "make": "Suzuki",
+      "model": "Vitara 1.4T",
+      "type": "petrol",
+      "l100": 5.8,
+      "kwh100": null,
+      "price": 27000
+    },
+    {
+      "id": "citroen_c3",
+      "make": "Citroën",
+      "model": "C3 1.2",
+      "type": "petrol",
+      "l100": 5.4,
+      "kwh100": null,
+      "price": 18000
+    },
+    {
+      "id": "citroen_c5aircross",
+      "make": "Citroën",
+      "model": "C5 Aircross 1.2",
+      "type": "petrol",
+      "l100": 6.0,
+      "kwh100": null,
+      "price": 32000
+    },
+    {
+      "id": "seat_leon",
+      "make": "SEAT",
+      "model": "Leon 1.5 TSI",
+      "type": "petrol",
+      "l100": 5.5,
+      "kwh100": null,
+      "price": 29000
+    },
+    {
+      "id": "cupra_formentor",
+      "make": "CUPRA",
+      "model": "Formentor 1.5 TSI",
+      "type": "petrol",
+      "l100": 6.0,
+      "kwh100": null,
+      "price": 36000
+    },
+    {
+      "id": "mg_zs",
+      "make": "MG",
+      "model": "ZS 1.0 Turbo",
+      "type": "petrol",
+      "l100": 6.0,
+      "kwh100": null,
+      "price": 22000
+    },
+    {
+      "id": "mitsubishi_asx",
+      "make": "Mitsubishi",
+      "model": "ASX 1.0",
+      "type": "petrol",
+      "l100": 5.8,
+      "kwh100": null,
+      "price": 26000
+    },
+    {
+      "id": "vitaris_rocco",
+      "make": "Toyota",
+      "model": "Corolla Cross Hybrid",
+      "type": "hybrid",
+      "l100": 5.0,
+      "kwh100": null,
+      "price": 35000
+    },
+    {
+      "id": "dacia_bigster_tce",
+      "make": "Dacia",
+      "model": "Bigster 1.2 TCe 130",
+      "type": "petrol",
+      "l100": 6.4,
+      "kwh100": null,
+      "price": 24990
+    },
+    {
+      "id": "dacia_bigster_hybrid",
+      "make": "Dacia",
+      "model": "Bigster 1.2 TCe Hybrid 155",
+      "type": "hybrid",
+      "l100": 5.1,
+      "kwh100": null,
+      "price": 27990
+    },
+    {
+      "id": "dacia_bigster_bifuel",
+      "make": "Dacia",
+      "model": "Bigster 1.2 TCe Bi-Fuel (benzīns/gāze)",
+      "type": "lpg",
+      "l100": 8.0,
+      "kwh100": null,
+      "price": 25990
+    },
+    {
+      "id": "dacia_sandero_bifuel",
+      "make": "Dacia",
+      "model": "Sandero 1.0 TCe Bi-Fuel",
+      "type": "lpg",
+      "l100": 7.4,
+      "kwh100": null,
+      "price": 17490
+    },
+    {
+      "id": "dacia_duster_bifuel",
+      "make": "Dacia",
+      "model": "Duster 1.0 TCe Bi-Fuel",
+      "type": "lpg",
+      "l100": 7.8,
+      "kwh100": null,
+      "price": 23490
+    },
+    {
+      "id": "toyota_corolla_hybrid",
+      "make": "Toyota",
+      "model": "Corolla 1.8 Hybrid",
+      "type": "hybrid",
+      "l100": 4.4,
+      "kwh100": null,
+      "price": 34500
+    },
+    {
+      "id": "toyota_chr_hybrid",
+      "make": "Toyota",
+      "model": "C-HR 1.8 Hybrid",
+      "type": "hybrid",
+      "l100": 4.3,
+      "kwh100": null,
+      "price": 36000
+    },
+    {
+      "id": "toyota_auris_hybrid_used",
+      "make": "Toyota",
+      "model": "Auris Hybrid 1.8 (2016)",
+      "type": "hybrid",
+      "l100": 3.8,
+      "kwh100": null,
+      "price": 12000
+    },
+    {
+      "id": "toyota_corolla_hybrid_used",
+      "make": "Toyota",
+      "model": "Corolla 1.8 Hybrid (2019)",
+      "type": "hybrid",
+      "l100": 4.2,
+      "kwh100": null,
+      "price": 18500
+    },
+    {
+      "id": "hyundai_ioniq_hybrid_used",
+      "make": "Hyundai",
+      "model": "IONIQ Hybrid (2018)",
+      "type": "hybrid",
+      "l100": 3.9,
+      "kwh100": null,
+      "price": 15000
+    },
+    {
+      "id": "vw_golf7_16tdi",
+      "make": "Volkswagen",
+      "model": "Golf VII 1.6 TDI (2015)",
+      "type": "diesel",
+      "l100": 4.6,
+      "kwh100": null,
+      "price": 11500
+    },
+    {
+      "id": "vw_golf7_12tsi",
+      "make": "Volkswagen",
+      "model": "Golf VII 1.2 TSI (2014)",
+      "type": "petrol",
+      "l100": 5.8,
+      "kwh100": null,
+      "price": 9500
+    },
+    {
+      "id": "vw_passat_b7_20tdi",
+      "make": "Volkswagen",
+      "model": "Passat B7 2.0 TDI (2013)",
+      "type": "diesel",
+      "l100": 5.4,
+      "kwh100": null,
+      "price": 11000
+    },
+    {
+      "id": "skoda_octavia_16tdi",
+      "make": "Škoda",
+      "model": "Octavia 1.6 TDI (2015)",
+      "type": "diesel",
+      "l100": 4.5,
+      "kwh100": null,
+      "price": 12500
+    },
+    {
+      "id": "skoda_octavia_14tsi",
+      "make": "Škoda",
+      "model": "Octavia 1.4 TSI (2016)",
+      "type": "petrol",
+      "l100": 6.0,
+      "kwh100": null,
+      "price": 13000
+    },
+    {
+      "id": "toyota_auris_133",
+      "make": "Toyota",
+      "model": "Auris 1.33 (2013)",
+      "type": "petrol",
+      "l100": 5.9,
+      "kwh100": null,
+      "price": 7500
+    },
+    {
+      "id": "toyota_corolla_16",
+      "make": "Toyota",
+      "model": "Corolla 1.6 (2015)",
+      "type": "petrol",
+      "l100": 6.3,
+      "kwh100": null,
+      "price": 10000
+    },
+    {
+      "id": "honda_civic_18",
+      "make": "Honda",
+      "model": "Civic 1.8 (2012)",
+      "type": "petrol",
+      "l100": 6.8,
+      "kwh100": null,
+      "price": 8000
+    },
+    {
+      "id": "ford_focus_16",
+      "make": "Ford",
+      "model": "Focus 1.6 Ti-VCT (2014)",
+      "type": "petrol",
+      "l100": 6.4,
+      "kwh100": null,
+      "price": 8500
+    },
+    {
+      "id": "opel_astra_j_16",
+      "make": "Opel",
+      "model": "Astra J 1.6 (2013)",
+      "type": "petrol",
+      "l100": 6.5,
+      "kwh100": null,
+      "price": 8000
+    },
+    {
+      "id": "mazda_6_20",
+      "make": "Mazda",
+      "model": "6 2.0 (2015)",
+      "type": "petrol",
+      "l100": 6.9,
+      "kwh100": null,
+      "price": 13500
+    },
+    {
+      "id": "bmw_320d_2015",
+      "make": "BMW",
+      "model": "320d (2015)",
+      "type": "diesel",
+      "l100": 4.8,
+      "kwh100": null,
+      "price": 15500
+    },
+    {
+      "id": "mercedes_c220cdi_2013",
+      "make": "Mercedes-Benz",
+      "model": "C 220 CDI (2013)",
+      "type": "diesel",
+      "l100": 5.2,
+      "kwh100": null,
+      "price": 14500
+    },
+    {
+      "id": "volvo_v60_d2",
+      "make": "Volvo",
+      "model": "V60 D2 (2014)",
+      "type": "diesel",
+      "l100": 4.2,
+      "kwh100": null,
+      "price": 13000
+    },
+    {
+      "id": "suzuki_swift_12",
+      "make": "Suzuki",
+      "model": "Swift 1.2 (2014)",
+      "type": "petrol",
+      "l100": 5.4,
+      "kwh100": null,
+      "price": 6500
+    },
+    {
+      "id": "nissan_qashqai_16dci",
+      "make": "Nissan",
+      "model": "Qashqai 1.6 dCi (2014)",
+      "type": "diesel",
+      "l100": 4.7,
+      "kwh100": null,
+      "price": 13500
+    },
+    {
+      "id": "mitsubishi_lancer_16",
+      "make": "Mitsubishi",
+      "model": "Lancer 1.6 (2012)",
+      "type": "petrol",
+      "l100": 7.0,
+      "kwh100": null,
+      "price": 7000
+    },
+    {
+      "id": "kia_ceed_16",
+      "make": "Kia",
+      "model": "Ceed 1.6 (2013)",
+      "type": "petrol",
+      "l100": 6.6,
+      "kwh100": null,
+      "price": 8000
+    },
+    {
+      "id": "hyundai_i30_14",
+      "make": "Hyundai",
+      "model": "i30 1.4 (2013)",
+      "type": "petrol",
+      "l100": 6.2,
+      "kwh100": null,
+      "price": 8000
+    },
+    {
+      "id": "peugeot_308_16hdi",
+      "make": "Peugeot",
+      "model": "308 1.6 HDi (2014)",
+      "type": "diesel",
+      "l100": 4.4,
+      "kwh100": null,
+      "price": 9000
+    },
+    {
+      "id": "renault_megane_15dci",
+      "make": "Renault",
+      "model": "Mégane 1.5 dCi (2013)",
+      "type": "diesel",
+      "l100": 4.3,
+      "kwh100": null,
+      "price": 8500
+    },
+    {
+      "id": "audi_a4_20tdi",
+      "make": "Audi",
+      "model": "A4 2.0 TDI (2013)",
+      "type": "diesel",
+      "l100": 5.0,
+      "kwh100": null,
+      "price": 14000
+    }
   ]
 }

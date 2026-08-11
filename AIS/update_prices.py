@@ -32,6 +32,8 @@ NESTE_TYPE_MAP = {
     "Neste Pro Diesel": "diesel_premium",
 }
 
+LPG_KEYWORDS = ("autogāze", "autogaze", "lpg", "gāze", "gaze", "propāns", "propan")
+
 
 def get(url):
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
@@ -60,6 +62,11 @@ def fetch_fuel_prices():
             prices["diesel"] = min(r["price"] for r in diesel)
     if "petrol" not in prices or "diesel" not in prices:
         raise ValueError("no petrol/diesel prices on cenometrs.lv")
+    if "lpg" not in prices:
+        for row in rows:
+            if any(k in str(row.get("type", "")).lower() for k in LPG_KEYWORDS):
+                prices["lpg"] = row["price"]
+                break
     return prices
 
 

@@ -30,12 +30,30 @@
                text-decoration: none; color: #333;
                box-shadow: 0 1px 4px rgba(0,0,0,.2); }
   .back-link:hover { color: #37ad8c; border-color: #37ad8c; }
+  .search-ctl { display: flex; gap: 4px; }
+  .search-ctl input { width: 200px; padding: 5px 8px; border: 1px solid #ccc; border-radius: 4px;
+                      font-size: 13px; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.2); }
+  .search-ctl button { border: 1px solid #ccc; border-radius: 4px; background: #fff; cursor: pointer;
+                       font-size: 13px; box-shadow: 0 1px 4px rgba(0,0,0,.2); }
+  .search-ctl button:hover { color: #37ad8c; border-color: #37ad8c; }
+  #results { position: absolute; top: 84px; left: 10px; width: 290px;
+             max-width: calc(100vw - 20px); max-height: calc(100vh - 104px); z-index: 1000;
+             background: #fff; border-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,.3);
+             overflow-y: auto; padding: 6px 10px; display: none; font-size: 13px; }
+  #results .rloc { padding: 6px 0; border-top: 1px solid #eee; cursor: pointer; }
+  #results .rloc:first-of-type { border-top: none; }
+  #results .rloc:hover { color: #1f8a6f; }
+  #results .rloc .dist { color: #666; font-size: 12px; }
+  #results .qmark { color: #333; border-bottom: 1px solid #eee; padding: 4px 0 8px; font-size: 12px; }
+  #results .empty { color: #666; font-size: 12px; padding: 8px 0; }
 </style>
 </head>
 <body>
 <div id="map"></div>
+<div id="results"></div>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="search.js"></script>
 <script>
 const I18N = {
   lv: {
@@ -59,6 +77,10 @@ const I18N = {
     specialty: { "Ģimenes ārsts": "Ģimenes ārsts", "Pediatrs": "Pediatrs" },
     yes: "Jā",
     days: { Pr: "Pr", O: "O", T: "T", C: "C", Pk: "Pk", S: "S", Sv: "Sv" },
+    searchPlaceholder: "Meklēt adresi vai LV kodu",
+    searchClear: "Notīrīt",
+    searching: "Meklē...",
+    notFound: "Nekas netika atrasts",
   },
   en: {
     title: "Family doctors map — Latvia",
@@ -81,6 +103,10 @@ const I18N = {
     specialty: { "Ģimenes ārsts": "General practitioner", "Pediatrs": "Pediatrician" },
     yes: "Yes",
     days: { Pr: "Mon", O: "Tue", T: "Wed", C: "Thu", Pk: "Fri", S: "Sat", Sv: "Sun" },
+    searchPlaceholder: "Search address or LV code",
+    searchClear: "Clear",
+    searching: "Searching...",
+    notFound: "Nothing found",
   },
   ru: {
     title: "Карта семейных врачей — Латвия",
@@ -103,6 +129,10 @@ const I18N = {
     specialty: { "Ģimenes ārsts": "Семейный врач", "Pediatrs": "Педиатр" },
     yes: "Да",
     days: { Pr: "Пн", O: "Вт", T: "Ср", C: "Чт", Pk: "Пт", S: "Сб", Sv: "Вс" },
+    searchPlaceholder: "Поиск адреса или LV-кода",
+    searchClear: "Очистить",
+    searching: "Поиск...",
+    notFound: "Ничего не найдено",
   },
 };
 
@@ -230,6 +260,90 @@ fetch("doctors.json").then(r => r.json()).then(d => {
     return el;
   };
   backControl.addTo(map);
+
+  let queryMarker = null;
+  const panel = document.getElementById("results");
+
+  const fmtDist = d => d < 1 ? `${Math.round(d * 1000)} m` : `${d.toFixed(1)} km`;
+
+  const resultRow = (loc, dist) => `
+    <div class="rloc" data-lat="${loc.lat}" data-lng="${loc.lng}">
+      <b>${esc(loc.address)}</b>${dist !== null ? ` <span class="dist">· ${fmtDist(dist)}</span>` : ""}
+      <div class="count">${I18N[lang].count}: ${loc.doctors.length}</div>
+    </div>`;
+
+  const doSearch = async raw => {
+    const t = I18N[lang];
+    if (queryMarker) { map.removeLayer(queryMarker); queryMarker = null; }
+    const q = raw.trim();
+    if (!q) { panel.style.display = "none"; return; }
+
+    const matched = matchLocations(q, data.locations);
+    if (matched.length) {
+      panel.innerHTML = matched.map(loc => resultRow(loc, null)).join("");
+      panel.style.display = "block";
+      map.fitBounds(L.latLngBounds(matched.map(l => [l.lat, l.lng])).pad(0.2), { maxZoom: 14 });
+      return;
+    }
+
+    panel.innerHTML = `<div class="empty">${t.searching}</div>`;
+    panel.style.display = "block";
+    try {
+      const url = "https://nominatim.openstreetmap.org/search?format=jsonv2&limit=1&countrycodes=lv&q=" +
+        encodeURIComponent(q);
+      const hits = await (await fetch(url, { headers: { "Accept-Language": lang } })).json();
+      if (!hits.length) { panel.innerHTML = `<div class="empty">${t.notFound}</div>`; return; }
+      const pt = { lat: +hits[0].lat, lng: +hits[0].lon };
+      queryMarker = L.circleMarker([pt.lat, pt.lng], {
+        radius: 7, fillColor: "#dc2626", fillOpacity: 0.9, color: "#fff", weight: 1.5,
+      }).bindTooltip(esc(hits[0].display_name)).addTo(map);
+      const near = nearestLocations(pt.lat, pt.lng, data.locations, 10);
+      panel.innerHTML = `<div class="qmark">${esc(hits[0].display_name)}</div>` +
+        near.map(loc => resultRow(loc, loc.dist)).join("");
+      const b = L.latLngBounds([[pt.lat, pt.lng],
+        near[0] ? [near[0].lat, near[0].lng] : [pt.lat, pt.lng]]);
+      map.fitBounds(b.pad(0.15), { maxZoom: 14 });
+    } catch {
+      panel.innerHTML = `<div class="empty">${t.notFound}</div>`;
+    }
+  };
+
+  panel.addEventListener("click", e => {
+    const el = e.target.closest(".rloc");
+    if (!el) return;
+    const lat = +el.dataset.lat, lng = +el.dataset.lng;
+    const loc = data.locations.find(l => l.lat === lat && l.lng === lng);
+    if (!loc) return;
+    map.flyTo([lat, lng], Math.max(map.getZoom(), 13), { duration: 0.5 });
+    markers.eachLayer(m => {
+      const p = m.getLatLng && m.getLatLng();
+      if (p && p.lat === lat && p.lng === lng) m.openPopup();
+    });
+  });
+
+  const searchControl = L.control({ position: "topleft" });
+  searchControl.onAdd = () => {
+    const div = L.DomUtil.create("div", "search-ctl");
+    const inp = L.DomUtil.create("input", "", div);
+    inp.type = "search";
+    inp.placeholder = I18N[lang].searchPlaceholder;
+    inp.setAttribute("aria-label", I18N[lang].searchPlaceholder);
+    inp.autocomplete = "off";
+    const btn = L.DomUtil.create("button", "", div);
+    btn.type = "button";
+    btn.innerHTML = "✕";
+    btn.setAttribute("aria-label", I18N[lang].searchClear);
+    L.DomEvent.disableClickPropagation(div);
+    L.DomEvent.disableScrollPropagation(div);
+    L.DomEvent.on(inp, "keydown", e => { if (e.key === "Enter") doSearch(inp.value); });
+    L.DomEvent.on(btn, "click", () => {
+      inp.value = "";
+      panel.style.display = "none";
+      if (queryMarker) { map.removeLayer(queryMarker); queryMarker = null; }
+    });
+    return div;
+  };
+  searchControl.addTo(map);
 });
 </script>
 </body>
