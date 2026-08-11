@@ -1994,6 +1994,7 @@
 		.image img {
 			border-radius: 5px;
 			display: block;
+			height: auto;
 		}
 
 		.image.left {
