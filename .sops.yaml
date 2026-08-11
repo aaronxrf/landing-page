@@ -1,0 +1,3 @@
+creation_rules:
+  - path_regex: ^(AGENTS|DONE|HANDOFF|TODO)\.md$
+    age: age1j7r8808v7f5zthz3v9wp86h79yvtne77l7cysr08rwnp772ld9zsw0dfqm

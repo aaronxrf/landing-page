@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ģimenes ārstu karte — Latvija</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css">
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic');
+  html, body { margin: 0; height: 100%; font-family: "Lato", system-ui, sans-serif; }
+  #map { height: 100%; }
+  .doc { border-top: 1px solid #eee; padding: 8px 0 4px; }
+  .doc:first-of-type { border-top: none; }
+  .doc .name { font-weight: 700; }
+  .badge { display: inline-block; background: #f97316; color: #fff; font-size: 11px;
+           border-radius: 3px; padding: 1px 6px; margin-left: 6px; vertical-align: 2px; }
+  .doc .practice { color: #444; font-size: 13px; margin: 2px 0 4px; }
+  .doc .row { font-size: 12px; color: #333; margin: 1px 0; }
+  .doc .row b { color: #555; }
+  .hours { font-size: 12px; line-height: 1.4; }
+  a { color: #1f8a6f; }
+  .leaflet-popup-content { max-height: 60vh; overflow-y: auto; }
+  .count { color: #666; font-size: 12px; }
+  .lang-sel { border: 1px solid #ccc; border-radius: 4px; padding: 3px 6px;
+              font-size: 13px; background: #fff; box-shadow: 0 1px 4px rgba(0,0,0,.2); }
+  .back-link { display: inline-block; background: #fff; border: 1px solid #ccc;
+               border-radius: 4px; padding: 3px 8px; font-size: 13px;
+               text-decoration: none; color: #333;
+               box-shadow: 0 1px 4px rgba(0,0,0,.2); }
+  .back-link:hover { color: #37ad8c; border-color: #37ad8c; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script>
+const I18N = {
+  lv: {
+    title: "Ģimenes ārstu karte — Latvija",
+    lang: "Valoda",
+    count: "Ārstu skaits",
+    badge: "var reģistrēties",
+    legendOpen: "var reģistrēties",
+    legendOther: "pārējie",
+    fields: {
+      region: "Reģions",
+      practice: "Prakse / iestāde",
+      specialty: "Specialitāte",
+      phone: "Tālrunis",
+      email: "E-pasts",
+      vaccination: "Vakcinācija",
+      patients: "Pacienti (kopā / bērni)",
+      hours_reception: "Pieņemšana",
+      hours_practice: "Prakses darba laiks",
+    },
+    specialty: { "Ģimenes ārsts": "Ģimenes ārsts", "Pediatrs": "Pediatrs" },
+    yes: "Jā",
+    days: { Pr: "Pr", O: "O", T: "T", C: "C", Pk: "Pk", S: "S", Sv: "Sv" },
+  },
+  en: {
+    title: "Family doctors map — Latvia",
+    lang: "Language",
+    count: "Doctors",
+    badge: "open for registration",
+    legendOpen: "open for registration",
+    legendOther: "others",
+    fields: {
+      region: "Region",
+      practice: "Practice / facility",
+      specialty: "Specialty",
+      phone: "Phone",
+      email: "Email",
+      vaccination: "Vaccination",
+      patients: "Patients (total / children)",
+      hours_reception: "Reception hours",
+      hours_practice: "Practice hours",
+    },
+    specialty: { "Ģimenes ārsts": "General practitioner", "Pediatrs": "Pediatrician" },
+    yes: "Yes",
+    days: { Pr: "Mon", O: "Tue", T: "Wed", C: "Thu", Pk: "Fri", S: "Sat", Sv: "Sun" },
+  },
+  ru: {
+    title: "Карта семейных врачей — Латвия",
+    lang: "Язык",
+    count: "Врачей",
+    badge: "открыт для записи",
+    legendOpen: "есть места для записи",
+    legendOther: "остальные",
+    fields: {
+      region: "Регион",
+      practice: "Практика / учреждение",
+      specialty: "Специальность",
+      phone: "Телефон",
+      email: "Email",
+      vaccination: "Вакцинация",
+      patients: "Пациенты (всего / дети)",
+      hours_reception: "Приём",
+      hours_practice: "Работа практики",
+    },
+    specialty: { "Ģimenes ārsts": "Семейный врач", "Pediatrs": "Педиатр" },
+    yes: "Да",
+    days: { Pr: "Пн", O: "Вт", T: "Ср", C: "Чт", Pk: "Пт", S: "Сб", Sv: "Вс" },
+  },
+};
+
+const detectLang = () => {
+  const langs = [...(navigator.languages || []), navigator.language]
+    .map(l => (l || "").toLowerCase());
+  for (const l of langs) {
+    const code = l.slice(0, 2);
+    if (["lv", "en", "ru"].includes(code)) return code;
+  }
+  return "lv";
+};
+
+const esc = s => String(s ?? "")
+  .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+  .replace(/"/g, "&quot;");
+
+let lang = detectLang();
+
+const localize = d => {
+  const o = { ...d };
+  const t = I18N[lang];
+  o.specialty = t.specialty[o.specialty] ?? o.specialty;
+  o.vaccination = o.vaccination === "Jā" ? t.yes : o.vaccination;
+  const dm = t.days;
+  const days = s => s.split(" · ").map(p => {
+    const i = p.indexOf(" ");
+    const day = i === -1 ? p : p.slice(0, i);
+    const rest = i === -1 ? "" : p.slice(i);
+    return (dm[day] ?? day) + rest;
+  }).join(" · ");
+  o.hours_reception = days(o.hours_reception);
+  o.hours_practice = days(o.hours_practice);
+  return o;
+};
+
+const rows = d => Object.entries(I18N[lang].fields)
+  .filter(([k]) => d[k])
+  .map(([k, label]) => {
+    const v = k === "email" ? `<a href="mailto:${esc(d[k])}">${esc(d[k])}</a>` : esc(d[k]);
+    return `<div class="row"><b>${label}:</b> ${v}</div>`;
+  })
+  .join("");
+
+const card = loc => {
+  const t = I18N[lang];
+  const regions = [...new Set(loc.doctors.map(d => d.region))];
+  return `
+  <div style="min-width:260px">
+    <div style="font-weight:700; font-size:14px">${esc(loc.address)}</div>
+    <div class="count">${t.count}: ${loc.doctors.length}${regions.length ? " · " + regions.join(", ") : ""}</div>
+    ${loc.doctors.map(d => { d = localize(d); return `
+      <div class="doc">
+        <span class="name">${esc(d.name)}</span>
+        ${d.open ? `<span class="badge">${t.badge}</span>` : ""}
+        ${rows(d)}
+      </div>`; }).join("")}
+  </div>`;
+};
+
+let map, data, markers, legend;
+
+const legendEl = t => {
+  const el = L.DomUtil.create("div", "");
+  el.style.cssText = "background:#fff;padding:6px 10px;border-radius:4px;font-size:12px;box-shadow:0 1px 4px rgba(0,0,0,.3)";
+  el.innerHTML = `<span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#f97316;margin-right:6px"></span>${t.legendOpen}<br>
+                  <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#2563eb;margin-right:6px"></span>${t.legendOther}<br>
+                  <span style="display:block;margin-top:4px;border-top:1px solid #eee;padding-top:3px;font-size:10px;color:#666">Dati: <a href="https://www.vmnvd.gov.lv/lv/gimenes-arsti-atbilstosi-teritorijam" target="_blank" rel="noopener">NVD vmnvd.gov.lv</a> · <a href="../../LICENSE.md">Licence</a></span>`;
+  return el;
+};
+
+const render = () => {
+  const t = I18N[lang];
+  document.title = t.title;
+  markers.clearLayers();
+  if (legend) legend.remove();
+  legend = L.control({ position: "bottomleft" });
+  legend.onAdd = () => legendEl(t);
+  legend.addTo(map);
+  const open = loc => loc.doctors.some(d => d.open);
+  data.locations.forEach(loc => {
+    markers.addLayer(L.circleMarker([loc.lat, loc.lng], {
+      radius: 9,
+      fillColor: open(loc) ? "#f97316" : "#2563eb",
+      fillOpacity: 0.85,
+      color: "#fff",
+      weight: 1.5,
+    }).bindPopup(card(loc)).bindTooltip(`${loc.doctors.length} · ${loc.address}`));
+  });
+};
+
+fetch("doctors.json").then(r => r.json()).then(d => {
+  data = d;
+  map = L.map("map");
+  L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    maxZoom: 19,
+    attribution: "&copy; OpenStreetMap contributors",
+  }).addTo(map);
+
+  markers = L.markerClusterGroup({ maxClusterRadius: 60 });
+  render();
+  markers.addTo(map);
+  map.fitBounds(L.latLngBounds(data.locations.map(l => [l.lat, l.lng])).pad(0.1), { maxZoom: 14 });
+
+  const langControl = L.control({ position: "topright" });
+  langControl.onAdd = () => {
+    const sel = L.DomUtil.create("select", "lang-sel");
+    sel.innerHTML = ["lv", "en", "ru"].map(c =>
+      `<option value="${c}"${c === lang ? " selected" : ""}>${c.toUpperCase()}</option>`).join("");
+    sel.setAttribute("aria-label", I18N[lang].lang);
+    L.DomEvent.on(sel, "change", e => {
+      lang = e.target.value;
+      sel.setAttribute("aria-label", I18N[lang].lang);
+      render();
+    });
+    return sel;
+  };
+  langControl.addTo(map);
+
+  const backControl = L.control({ position: "topleft" });
+  backControl.onAdd = () => {
+    const el = L.DomUtil.create("a", "back-link");
+    el.href = "../../";
+    el.innerHTML = "← rf.id.lv";
+    return el;
+  };
+  backControl.addTo(map);
+});
+</script>
+</body>
+</html>

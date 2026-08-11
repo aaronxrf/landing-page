@@ -1,0 +1,22 @@
+name: Refresh prices
+
+on:
+  schedule:
+    - cron: "0 5 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pull fuel/electricity prices
+        run: python3 AIS/update_prices.py --quiet
+      - name: Commit updated snapshot
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: refresh fuel/electricity prices"
+          file_pattern: AIS/data/prices.json

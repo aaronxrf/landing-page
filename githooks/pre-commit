@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+set -euo pipefail
+# Strict guard: internal docs are committed ONLY as sops-encrypted *.md.enc.
+# Fails if:
+#   - a plaintext doc (AGENTS/DONE/HANDOFF/TODO.md) is staged;
+#   - a staged *.md.enc does not decrypt cleanly;
+#   - a staged *.md.enc is stale vs the current plaintext working copy.
+# Bypass only deliberately: git commit --no-verify.
+
+command -v sops >/dev/null 2>&1 || {
+  echo "pre-commit: sops not found — cannot verify encryption (install sops)"
+  exit 1
+}
+
+staged=$(git diff --cached --name-only)
+
+for f in AGENTS.md DONE.md HANDOFF.md TODO.md; do
+  if echo "$staged" | grep -qx "$f"; then
+    echo "pre-commit: plaintext $f is staged — run scripts/encrypt.sh and stage $f.enc instead"
+    exit 1
+  fi
+  if echo "$staged" | grep -qx "$f.enc"; then
+    sops -d "$f.enc" >/dev/null || {
+      echo "pre-commit: $f.enc does not decrypt cleanly"
+      exit 1
+    }
+    if [ -f "$f" ]; then
+      sops -d "$f.enc" | cmp -s - "$f" || {
+        echo "pre-commit: $f.enc is stale — run scripts/encrypt.sh"
+        exit 1
+      }
+    fi
+  fi
+done
+
+exit 0

@@ -1,0 +1,26 @@
+name: Refresh family-doctors data
+
+on:
+  schedule:
+    - cron: "30 5 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install openpyxl
+        run: python3 -m pip install --quiet openpyxl
+      - name: Fetch NVD spreadsheets + rebuild map data
+        run: |
+          python3 GAK/fetch_nvd.py || echo "fetch failed, falling back to committed xlsx"
+          python3 GAK/build.py
+      - name: Commit updated snapshot
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "chore: refresh family-doctors map data"
+          file_pattern: GAK/docs/doctors.json GAK/geocode_cache.json

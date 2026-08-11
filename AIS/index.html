@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Car Cost Comparator</title>
+<link rel="stylesheet" href="static/style.css">
+</head>
+<body>
+<header>
+  <a class="back-link" href="../">← rf.id.lv</a>
+  <h1 data-i18n="title">Car Cost Comparator</h1>
+  <div id="lang-switch">
+    <button class="lang-btn" data-lang="en">EN</button>
+    <button class="lang-btn" data-lang="lv">LV</button>
+    <button class="lang-btn" data-lang="ru">RU</button>
+  </div>
+</header>
+
+<section id="prices">
+  <div class="price-row">
+    <label for="petrol-price" data-i18n="petrolPrice">Petrol, €/L</label>
+    <input id="petrol-price" type="number" step="0.001" min="0" value="1.80">
+    <label for="diesel-price" data-i18n="dieselPrice">Diesel, €/L</label>
+    <input id="diesel-price" type="number" step="0.001" min="0" value="1.70">
+    <label for="elec-price" data-i18n="elecPrice">Electricity, €/kWh</label>
+    <input id="elec-price" type="number" step="0.01" min="0" value="0.35">
+    <label for="annual-km" data-i18n="annualKm">Annual km</label>
+    <input id="annual-km" type="number" step="1000" min="0" value="15000">
+    <label for="cycle-select" data-i18n="cycleLabel">Driving cycle</label>
+    <select id="cycle-select">
+      <option value="city" data-i18n="cycleCity">City</option>
+      <option value="mixed" data-i18n="cycleMixed">Mixed</option>
+      <option value="highway" data-i18n="cycleHighway">Highway</option>
+    </select>
+    <label for="fuel-yoy" data-i18n="fuelYoY">Fuel price growth, %/yr</label>
+    <input id="fuel-yoy" type="number" step="0.5" min="0" value="0">
+    <label for="ownership-years" data-i18n="ownYears">Ownership, years</label>
+    <input id="ownership-years" type="number" step="1" min="1" value="10">
+  </div>
+  <div class="price-row">
+    <span id="fuel-source">Loading fuel prices...</span>
+    <button id="refresh-fuel" data-i18n="refresh">Refresh prices</button>
+  </div>
+</section>
+
+<section id="selector">
+  <select id="make-select"></select>
+  <select id="model-select"></select>
+  <button id="add-car" data-i18n="add">Add</button>
+</section>
+
+<section id="selected"></section>
+
+<section id="table-wrap" class="table-wrap">
+  <table id="compare">
+    <thead><tr></tr></thead>
+    <tbody></tbody>
+  </table>
+</section>
+
+<section id="summary-section" class="table-wrap" style="display:none">
+  <h2 data-i18n="summary">Cost over ownership</h2>
+  <table id="summary">
+    <thead><tr></tr></thead>
+    <tbody></tbody>
+  </table>
+</section>
+
+<section class="charts">
+  <div class="chart-card">
+    <h2 data-i18n="chartPayback">Payback of price difference</h2>
+    <div class="chart-box"><canvas id="chart-payback"></canvas></div>
+    <p id="payback-text"></p>
+  </div>
+  <div class="chart-card">
+    <h2 data-i18n="chart100">Cost per 100 km</h2>
+    <div class="chart-box"><canvas id="chart-cost"></canvas></div>
+  </div>
+  <div class="chart-card">
+    <h2 data-i18n="chartElec">Electricity price sensitivity</h2>
+    <div class="chart-box"><canvas id="chart-elec"></canvas></div>
+  </div>
+  <div class="chart-card">
+    <h2 data-i18n="co2Total">CO2 over ownership, t</h2>
+    <div class="chart-box"><canvas id="chart-co2"></canvas></div>
+  </div>
+</section>
+
+<script src="static/chart.umd.js"></script>
+<script src="static/app.js"></script>
+<footer class="footer">© 2026 rf.id.lv · <a href="../LICENSE.md">License</a></footer>
+</body>
+</html>

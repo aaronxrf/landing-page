@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.DS_Store
+AGENTS.md
+DONE.md
+HANDOFF.md
+TODO.md
