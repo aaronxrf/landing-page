@@ -1,11 +1,11 @@
 {
   "prices": {
-    "petrol": 1.877,
-    "diesel": 2.037,
+    "petrol": 1.864,
+    "diesel": 2.014,
     "elec": 0.28
   },
   "source": "cenometrs.lv",
-  "timestamp": 1789638772,
+  "timestamp": 1789723696,
   "fallback": false,
   "error": null
 }
